@@ -426,15 +426,15 @@ pub struct ApplicableHeaderTradeSettlement <'invoice>{
 
 #[derive(Serialize, Clone, Copy, Debug)]
 pub struct ApplicableTradeTax <'invoice> {
-    #[serde(rename="ram:CalculatedAmount",serialize_with="format_f64_option")]
+    #[serde(rename="ram:CalculatedAmount",serialize_with="format_f64_option", skip_serializing_if = "Option::is_none")]
     pub calculated_amount: Option<f64>,
     #[serde(rename="ram:TypeCode")]
     pub type_code: &'invoice str,
-    #[serde(rename="ram:BasisAmount",serialize_with="format_f64_option")]
+    #[serde(rename="ram:BasisAmount",serialize_with="format_f64_option", skip_serializing_if = "Option::is_none")]
     pub basis_amount: Option<f64>,
     #[serde(rename="ram:CategoryCode")]
     pub category_code: VATCategoryCode,
-    #[serde(rename="ram:RateApplicablePercent",serialize_with="format_f64_option")]
+    #[serde(rename="ram:RateApplicablePercent",serialize_with="format_f64_option", skip_serializing_if = "Option::is_none")]
     pub rate_applicable_percent: Option<f64>,
 
 }
