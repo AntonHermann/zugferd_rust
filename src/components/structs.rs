@@ -477,7 +477,7 @@ pub struct SpecifiedTradeSettlementHeaderMonetarySummation {
     #[serde(rename="ram:TaxBasisTotalAmount",serialize_with="format_f64_option")]
     pub tax_basis_total_amount: Option<f64>,
     /// `BT-110`: The total VAT amount for the Invoice.
-    #[serde(rename="ram:TaxTotalAmount")]
+    #[serde(rename="ram:TaxTotalAmount", skip_serializing_if = "Option::is_none")]
     pub tax_total_amount: Option<TaxTotalAmount>,
     /// `BT-112`: The total amount of the Invoice with VAT.
     #[serde(rename="ram:GrandTotalAmount",serialize_with="format_f64_option")]
